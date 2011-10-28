@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>jQuery Hangul IME</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="controls">
+      <button id="status">한</button>
+      한/영 변환: Shift+Space
+      <label>
+        <input type="radio" name="layout" value="dubeol" checked="checked" />
+        두벌식
+      </label>
+      <label>
+        <input type="radio" name="layout" value="sebeol" />
+        세벌식 최종
+      </label>
+    </div>
+    <div class="editor">
+      <textarea rows="20" cols="60" autofocus="autofocus"></textarea>
+    </div>
+    <p>
+      소스 코드: <a href="https://github.com/clee704/jquery-hangulime">jQuery Hangul IME (GitHub)</a>
+    </p>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="lib/textinputs_jquery.js"></script>
+    <script src="lib/hangul.inputmethods.min.js"></script>
+    <script src="../jquery.hangulime.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $.hangulime({
+          layoutChooser: 'input[name=layout]',
+          statusLabel: '#status',
+          editor: 'textarea, input[type=text]'
+        });
+      });
+    </script>
+  </body>
+</html>
