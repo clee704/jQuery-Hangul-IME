@@ -1,5 +1,5 @@
 /*!
- * jQuery Hangul IME 0.1
+ * jQuery Hangul IME 0.1.1
  *
  * Copyright 2011, Choongmin Lee
  * Licensed under the MIT license.
@@ -8,7 +8,7 @@
  *     hangul.inputmethods.js (https://github.com/clee704/hangul-js)
  *     textinputs_jquery.js (http://code.google.com/p/rangyinputs)
  */
-(function (jQuery, hangul, undefined) {
+(function ($, hangul, window, undefined) {
 
 var settings = {},
     buffer = [],
@@ -20,6 +20,8 @@ var settings = {},
     inputMode = 'hangul';
 
 function hangulime(newSettings) {
+    if (newSettings === undefined)
+        newSettings = {};
     setStatusLabel(newSettings.statusLabel);
     setLayoutSelector(newSettings.layoutChooser);
     setEditor(newSettings.editor);
@@ -28,6 +30,29 @@ function hangulime(newSettings) {
 function setStatusLabel(statusLabel) {
     if (settings.statusLabel) {
         $(settings.statusLabel).unbind('click', changeInputMode);
+        if (settings.statusLabel === '#hangulime-statuslabel') {
+            $('#hangulime-statuslabel').remove();
+        }
+    }
+    if (statusLabel === undefined) {
+        statusLabel = '#hangulime-statuslabel';
+        $('<button/>', {
+            id: 'hangulime-statuslabel',
+            title: 'Shift+Space',
+            css: {
+                border: '1px solid #666',
+                padding: '0.25em 0',
+                width: '2em',
+                fontSize: '15px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                position: 'absolute',
+                right: '1em',
+                bottom: '3em',
+                opacity: 0.67,
+                zIndex: 10000
+            }
+        }).appendTo('body');
     }
     settings.statusLabel = statusLabel;
     if (statusLabel) {
@@ -36,15 +61,55 @@ function setStatusLabel(statusLabel) {
 }
 
 function setLayoutSelector(layoutChooser) {
-    var s;
+    var e,
+        layout;
     if (settings.layoutChooser) {
         $(layoutChooser).unbind('click', layoutChanged);
+        if (settings.layoutChooser === 'input[name=hangulime-layoutchooser]') {
+            $('#hangulime-layoutchooser').remove();
+        }
+    }
+    if (layoutChooser === undefined) {
+        layoutChooser = 'input[name=hangulime-layoutchooser]';
+        e = $('<div/>', {
+            id: 'hangulime-layoutchooser',
+            css: {
+                position: 'absolute',
+                right: '1em',
+                bottom: '1em',
+                opacity: 0.67,
+                zIndex: 10000
+            }
+        });
+        $('<input/>', {
+            type: 'radio',
+            name: 'hangulime-layoutchooser',
+            value: 'dubeol',
+            checked: 'checked'
+        }).prependTo($('<label>\ub450\ubc8c\uc2dd</label>').appendTo(e));
+        $('<input/>', {
+            type: 'radio',
+            name: 'hangulime-layoutchooser',
+            value: 'sebeol'
+        }).prependTo($('<label>\uc138\ubc8c\uc2dd</label>').appendTo(e));
+        e.appendTo('body');
     }
     settings.layoutChooser = layoutChooser;
     if (layoutChooser) {
         $(layoutChooser).click(layoutChanged);
-        automaton = automata[$(layoutChooser + ':checked').val()];
-        automaton.reset();
+        layout = $(layoutChooser + ':checked').val();
+        if (layout in automata) {
+            automaton = automata[layout];
+            automaton.reset();
+        }
+        // IE 9 bug fix
+        $(window.document).ready(function () {
+            layout = $(layoutChooser + ':checked').val();
+            if (layout in automata) {
+                automaton = automata[layout];
+                automaton.reset();
+            }
+        });
     }
 }
 
@@ -57,6 +122,9 @@ function setEditor(editor) {
     };
     if (settings.editor) {
         $(settings.editor).die(listeners);
+    }
+    if (editor === undefined) {
+        editor = 'textarea, input[type=text]';
     }
     settings.editor = editor;
     if (editor) {
@@ -73,8 +141,11 @@ function changeInputMode() {
 }
 
 function layoutChanged() {
-    automaton = automata[$(this).val()];
-    automaton.reset();
+    var layout = $(this).val();
+    if (layout in automata) {
+        automaton = automata[layout];
+        automaton.reset();
+    }
 }
 
 function keypress(e) {
@@ -93,7 +164,7 @@ function keypress(e) {
 function keydown(e) {
     var c = e.which,
         editor;
-    if (e.shiftKey && (e.which == 32 || e.which == 229)) {
+    if (e.shiftKey && (c == 32 || c == 229)) {
         changeInputMode();
         return false;
     } else if (inputMode === 'hangul') {
@@ -150,4 +221,4 @@ function del(editor) {
 
 $.hangulime = hangulime;
 
-})(jQuery, hangul);
+})(jQuery, hangul, window);
