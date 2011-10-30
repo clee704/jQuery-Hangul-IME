@@ -121,14 +121,14 @@ function setEditor(editor) {
         'blur': reset
     };
     if (settings.editor) {
-        $(settings.editor).die(listeners);
+        $(settings.editor).unbind(listeners);
     }
     if (editor === undefined) {
         editor = 'textarea, input[type=text]';
     }
     settings.editor = editor;
     if (editor) {
-        $(editor).live(listeners);
+        $(editor).bind(listeners);
     }
 }
 
