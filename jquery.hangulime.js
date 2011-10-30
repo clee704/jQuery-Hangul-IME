@@ -1,5 +1,5 @@
 /*!
- * jQuery Hangul IME 0.1.1
+ * jQuery Hangul IME 0.1.1.x
  *
  * Copyright 2011, Choongmin Lee
  * Licensed under the MIT license.
@@ -46,7 +46,7 @@ function setStatusLabel(statusLabel) {
                 fontSize: '15px',
                 fontWeight: 'bold',
                 textAlign: 'center',
-                position: 'absolute',
+                position: 'fixed',
                 right: '1em',
                 bottom: '3em',
                 opacity: 0.67,
@@ -74,7 +74,7 @@ function setLayoutSelector(layoutChooser) {
         e = $('<div/>', {
             id: 'hangulime-layoutchooser',
             css: {
-                position: 'absolute',
+                position: 'fixed',
                 right: '1em',
                 bottom: '1em',
                 opacity: 0.67,
