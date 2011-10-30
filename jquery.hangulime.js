@@ -20,8 +20,9 @@ var settings = {},
     inputMode = 'hangul';
 
 function hangulime(newSettings) {
-    if (newSettings === undefined)
+    if (newSettings === undefined) {
         newSettings = {};
+    }
     setStatusLabel(newSettings.statusLabel);
     setLayoutSelector(newSettings.layoutChooser);
     setEditor(newSettings.editor);
@@ -194,8 +195,9 @@ function put(editor, keyCode) {
             editor.setSelection(s.start, s.end);
         }
     }
-    if (keyCode == 13) // IE 9 gives 13 for Enter
+    if (keyCode == 13) { // IE 9 gives 13 for Enter
         keyCode = 10;
+    }
     ch = String.fromCharCode(keyCode);
     automaton.next(ch);
     if (buffer.length > 0) {
