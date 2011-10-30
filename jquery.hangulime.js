@@ -1,5 +1,5 @@
 /*!
- * jQuery Hangul IME 0.1.1.x
+ * jQuery Hangul IME 0.1.2
  *
  * Copyright 2011, Choongmin Lee
  * Licensed under the MIT license.
