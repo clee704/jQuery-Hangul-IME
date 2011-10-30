@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>jQuery Hangul IME</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Custom controls - jQuery Hangul IME</title>
   </head>
   <body>
     <div class="controls">
@@ -21,20 +20,15 @@
     <div class="editor">
       <textarea rows="20" cols="60" autofocus="autofocus"></textarea>
     </div>
-    <p>
-      소스 코드: <a href="https://github.com/clee704/jQuery-Hangul-IME">jQuery Hangul IME (GitHub)</a>
-    </p>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script src="lib/textinputs_jquery.js"></script>
-    <script src="lib/hangul.inputmethods.min.js"></script>
+    <script src="../lib/textinputs_jquery.js"></script>
+    <script src="../lib/hangul.inputmethods.min.js"></script>
     <script src="../jquery.hangulime.min.js"></script>
     <script>
-      $(document).ready(function () {
-        $.hangulime({
-          layoutChooser: 'input[name=layout]',
-          statusLabel: '#status',
-          editor: 'textarea, input[type=text]'
-        });
+      $.hangulime({
+        layoutChooser: 'input[name=layout]',
+        statusLabel: '#status',
+        editor: 'textarea'
       });
     </script>
   </body>

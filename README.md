@@ -15,4 +15,4 @@ Dependencies
 Usage
 -----
 
-Please refer to the sample file `sample/jquery.hangulime.html`.
+Please refer to the examples in the `examples` directory.
