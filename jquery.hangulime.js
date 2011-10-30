@@ -172,7 +172,7 @@ function keydown(e) {
         if (c == 8) {
             return del(editor);
         } else if (e.metaKey || e.altKey || e.ctrlKey || c == 9 || c == 19 || c == 20 ||
-                c >= 33 && c <= 36 || c == 45 || c == 46 || c == 91 || c >= 112 && c <= 123 || c == 145) {
+                c >= 33 && c <= 40 || c == 45 || c == 46 || c == 91 || c >= 112 && c <= 123 || c == 145) {
             automaton.reset();
         }
     }
