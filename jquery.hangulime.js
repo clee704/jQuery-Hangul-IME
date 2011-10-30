@@ -156,8 +156,7 @@ function keypress(e) {
         return;
     }
     if (inputMode === 'hangul') {
-        put($(this), e.which);
-        return false;
+        return put($(this), e.which);
     }
 }
 
@@ -185,21 +184,35 @@ function reset() {
 }
 
 function put(editor, keyCode) {
-    var s;
+    var s,
+        ch,
+        useNativePutter = false;
     if (automaton.currentBlock !== undefined) {
         s = editor.getSelection();
         editor.setSelection(s.end - 1, s.end);
+        if (editor.getSelection().text !== automaton.currentBlock) {
+            editor.setSelection(s.start, s.end);
+        }
     }
     if (keyCode == 13) // IE 9 gives 13 for Enter
         keyCode = 10;
-    automaton.next(String.fromCharCode(keyCode));
+    ch = String.fromCharCode(keyCode);
+    automaton.next(ch);
     if (buffer.length > 0) {
+        if (buffer[buffer.length - 1] === ch && automaton.currentBlock === undefined) {
+            buffer.pop();
+            useNativePutter = true;
+        }
         editor.replaceSelectedText(buffer.join(''));
         buffer.length = 0;
+        if (useNativePutter) {
+            return;
+        }
     }
     if (automaton.currentBlock !== undefined) {
         editor.replaceSelectedText(automaton.currentBlock);
     }
+    return false;
 }
 
 function del(editor) {
