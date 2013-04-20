@@ -4,9 +4,9 @@ jQuery Hangul IME is a JavaScript IME supporting Dubeolsik and Sebeolsik Final.
 
 Dependencies
 ------------
-* [jQuery >=1.4.3] (http://jquery.com/)
-* [Rangyinputs jQuery plug-in >=0.1.205] (http://code.google.com/p/rangyinputs)
-* [hangul.inputmethods.js >=1.1] (https://github.com/clee704/hangul-js)
+* [jQuery] (http://jquery.com/) (>=1.4.3)
+* [Rangyinputs] (http://code.google.com/p/rangyinputs) (>=0.1.205)
+* [hangul.inputmethods.js] (https://github.com/clee704/hangul-js) (>=1.1)
 
 Usage
 -----
