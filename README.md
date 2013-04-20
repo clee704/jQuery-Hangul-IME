@@ -14,4 +14,4 @@ Please refer to the examples in the `examples` directory.
 
 Known Issues
 ------------
-* Bookmarklet doesn't work with `iframe` and dynamic DOM elements.
+* IME doesn't work with `iframe` and dynamic DOM elements.
