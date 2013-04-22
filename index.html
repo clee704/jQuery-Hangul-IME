@@ -23,7 +23,7 @@
         </section>
         <h2>북마클릿</h2>
         <section>
-          <a class="btn" href="javascript:(function(){var e=this,a=this.document,t=false,r={jquery:'https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js',hangulime:'https://raw.github.com/clee704/jQuery-Hangul-IME/master/jquery-hangulime-standalone.min.js'};function n(e,t){var r=a.getElementsByTagName('head')[0],n=a.createElement('script'),u=false;n.src=e;n.onload=n.onreadystatechange=function(){if(!u&amp;&amp;(!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){u=true;t();n.onload=n.onreadystatechange=null;r.removeChild(n)}};r.appendChild(n)}function u(e,a){var t=e.split('.'),r=a.split('.'),n=t.length,u=r.length;for(var i=0;i<n&amp;&amp;i<u;++i){var l=parseInt(t[i]);var s=parseInt(r[i]);if(l<s){return-1}else if(l>s){return 1}}return n<u?-1:n>u?1:0}function i(){var a,r;if(e._hangulime_jQuery){a=e.$;r=e.jQuery;e.$=e.jQuery=e._hangulime_jQuery}e.jQuery('textarea, input[type='text']').hangulime();if(t&amp;&amp;!e._hangulime_jQuery){t=false;e._hangulime_jQuery=e.jQuery.noConflict(true)}if(a){e.$=a;e.jQuery=r}}function l(){n(r.hangulime,i)}if(e._hangulime_jQuery){i()}else if(e.jQuery&amp;&amp;u(e.jQuery.fn.jquery,'1.4.3')>0){if(e.jQuery.hangulime){i()}else{l()}}else{t=true;n(r.jquery,l)}})();"><i class="icon-bookmark"></i> 한글 입력기</a>
+          <a class="btn" href="#" id="bookmarklet"><i class="icon-bookmark"></i> 한글 입력기</a>
           버튼을 상단 북마크바에 끌어 넣으세요. 한글을 입력하고 싶은 페이지에서 북마크를 클릭하면 입력기가 활성화됩니다.
         </section>
         <footer>
@@ -36,6 +36,9 @@
   <script src="jquery-hangulime-standalone.min.js"></script>
   <script>
     $('textarea').hangulime();
+    $.get('bookmarklet.min.js', function (data) {
+      $('#bookmarklet').attr('href', 'javascript:' + data);
+    });
   </script>
 </body>
 </html>
