@@ -8,8 +8,8 @@ Dependencies
 * [Rangyinputs](http://code.google.com/p/rangyinputs) (>=0.1.205)
 * [hangul.js](https://github.com/clee704/hangul-js) (>=1.1)
   * hangul.js
-  * hangul.dubeol.js
-  * hangul.sebeol.js
+  * hangul-dubeol.js
+  * hangul-sebeol.js
 
 Known issues
 ------------
