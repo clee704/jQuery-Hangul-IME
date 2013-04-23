@@ -17,4 +17,7 @@ $(minified): %.min.js: %.js
 init:
 	npm install -g uglify-js
 
-.PHONY: min combine init
+server:
+	python -m SimpleHTTPServer
+
+.PHONY: min combine init server

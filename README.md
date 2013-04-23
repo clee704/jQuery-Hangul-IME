@@ -2,6 +2,8 @@ jQuery Hangul IME
 =================
 jQuery Hangul IME is a JavaScript IME supporting Dubeolsik and Sebeolsik Final.
 
+Check out <http://clee704.github.io/jQuery-Hangul-IME/> for demo and usage.
+
 Dependencies
 ------------
 * [jQuery](http://jquery.com/) (>=1.4.3)
