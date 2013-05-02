@@ -92,7 +92,7 @@ function keypress(e) {
       c = e.which;
   // In Firefox, special keys also trigger keypress events; so filter them
   if (e.metaKey || e.altKey || e.ctrlKey ||
-      e.shiftKey && (c == KEY_CODE.SPACE || c == KEY_CODE.IME) ||
+      e.shiftKey && c == KEY_CODE.SPACE || c == KEY_CODE.IME ||
       c == 0 || c == KEY_CODE.BACKSPACE || c == KEY_CODE.TAB ||
       c == KEY_CODE.PAUSE_BREAK || c == KEY_CODE.CAPS_LOCK ||
       c == KEY_CODE.SCROLL_LOCK) {
@@ -107,7 +107,7 @@ function keydown(e) {
   if (e.altKey && e.shiftKey && c == KEY_CODE.SPACE) {
     changeAutomaton();
     return false;
-  } else if (e.shiftKey && (c == KEY_CODE.SPACE || c == KEY_CODE.IME)) {
+  } else if (e.shiftKey && c == KEY_CODE.SPACE || c == KEY_CODE.IME) {
     changeInputMode();
     return false;
   } else if (inputMode === 'hangul') {
