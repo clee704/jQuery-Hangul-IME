@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>jQuery 한글 입력기</title>
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
   <style>
-    body { padding: 10px; }
+    body { padding: 10px; line-height: 22px; }
     h1 { font-size: 30px; }
     h2 { font-size: 20px; }
   </style>
@@ -22,8 +22,26 @@
         </section>
         <h2>북마클릿</h2>
         <section>
-          <a class="btn" href="#" id="bookmarklet"><i class="icon-bookmark"></i> 한글 입력기</a>
-          버튼을 상단 북마크바에 끌어 넣으세요. 한글을 입력하고 싶은 페이지에서 북마크를 클릭하면 입력기가 활성화됩니다.
+          <p>
+            <a class="btn" href="#" id="bookmarklet"><i class="icon-bookmark"></i> 한글 입력기</a>
+            버튼을 상단 북마크바에 끌어 넣으세요. 한글을 입력하고 싶은 페이지에서 북마크를 클릭하면 입력기가 활성화됩니다.
+          </p>
+        </section>
+        <h2>사용법</h2>
+        <section>
+          <p>
+            먼저 jQuery를 제외한 jQuery 한글 입력기가 의존하는 라이브러리가 포함된
+            <a href="https://raw.github.com/clee704/jQuery-Hangul-IME/master/jquery-hangulime-standalone.min.js">jquery-hangulime-standalone.min.js</a>
+            파일을 받아 jQuery보다 나중에 로드되도록 페이지에 삽입합니다.
+            jQuery 한글 입력기는 jQuery 셀렉터가 반환하는 엘리먼트 컬렉션이 사용할 수 있는 <code>hangulime</code> 메서드를 제공합니다.
+            예를 들어 페이지 내의 모든 <code>&lt;textarea&gt;</code>에서 한글 입력기를 사용하려면 다음과 같이 실행하면 됩니다.
+          </p>
+          <pre>$('textarea').hangulime();</pre>
+          <p>
+            인자가 없는 것과 인자로 <code>'init'</code>를 넘기는 것은 같은 효과가 있습니다.
+            다음과 같이 <code>'destroy'</code> 인자를 넘기면 한글 입력기를 사용하지 않습니다.
+          </p>
+          <pre>$('textarea').hangulime('destroy');</pre>
         </section>
         <footer>
           <a href="https://github.com/clee704/jQuery-Hangul-IME"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
