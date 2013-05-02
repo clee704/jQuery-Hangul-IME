@@ -5,7 +5,7 @@
  *   jQuery (http://jquery.com/)
  *   hangul.js, hangul-dubeol.js, hangul-sebeol.js (https://github.com/clee704/hangul-js)
  *   rangyinputs_jquery.js (http://code.google.com/p/rangyinputs)
- * @version 0.2
+ * @version 0.2.1
  * @copyright Copyright 2013, Choongmin Lee
  * @license MIT license
  */
@@ -92,7 +92,7 @@ function keypress(e) {
       c = e.which;
   // In Firefox, special keys also trigger keypress events; so filter them
   if (e.metaKey || e.altKey || e.ctrlKey ||
-      e.shiftKey && (c == KEY_CODE.SPACE || c == KEY_CODE.IME) ||
+      e.shiftKey && c == KEY_CODE.SPACE || c == KEY_CODE.IME ||
       c == 0 || c == KEY_CODE.BACKSPACE || c == KEY_CODE.TAB ||
       c == KEY_CODE.PAUSE_BREAK || c == KEY_CODE.CAPS_LOCK ||
       c == KEY_CODE.SCROLL_LOCK) {
@@ -104,11 +104,11 @@ function keypress(e) {
 function keydown(e) {
   var $this = $(this),
       c = e.which;
-  if (e.shiftKey && (c == KEY_CODE.SPACE || c == KEY_CODE.IME)) {
-    changeInputMode();
-    return false;
-  } if (e.altKey && c == KEY_CODE.SPACE) {
+  if (e.altKey && e.shiftKey && c == KEY_CODE.SPACE) {
     changeAutomaton();
+    return false;
+  } else if (e.shiftKey && c == KEY_CODE.SPACE || c == KEY_CODE.IME) {
+    changeInputMode();
     return false;
   } else if (inputMode === 'hangul') {
     if (c == KEY_CODE.BACKSPACE) {
