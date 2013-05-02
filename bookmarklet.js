@@ -3,8 +3,10 @@
       doc = this.document,
       loadingJQuery = false,
       src = {
-        jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js',
-        hangulime: 'https://raw.github.com/clee704/jQuery-Hangul-IME/master/jquery-hangulime-standalone.min.js'
+        //jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js',
+        //hangulime: 'https://raw.github.com/clee704/jQuery-Hangul-IME/master/jquery-hangulime-standalone.min.js'
+        jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js',
+        hangulime: 'http://clee704.github.io/jQuery-Hangul-IME/jquery-hangulime-standalone.min.js'
       };
   function loadScript(url, callback) {
     var head = doc.getElementsByTagName("head")[0],
