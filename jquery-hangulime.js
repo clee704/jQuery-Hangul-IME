@@ -104,11 +104,11 @@ function keypress(e) {
 function keydown(e) {
   var $this = $(this),
       c = e.which;
-  if (e.shiftKey && (c == KEY_CODE.SPACE || c == KEY_CODE.IME)) {
-    changeInputMode();
-    return false;
-  } if (e.altKey && c == KEY_CODE.SPACE) {
+  if (e.altKey && e.shiftKey && c == KEY_CODE.SPACE) {
     changeAutomaton();
+    return false;
+  } else if (e.shiftKey && (c == KEY_CODE.SPACE || c == KEY_CODE.IME)) {
+    changeInputMode();
     return false;
   } else if (inputMode === 'hangul') {
     if (c == KEY_CODE.BACKSPACE) {
