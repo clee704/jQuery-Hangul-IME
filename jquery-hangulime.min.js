@@ -5,7 +5,7 @@
  *   jQuery (http://jquery.com/)
  *   hangul.js, hangul-dubeol.js, hangul-sebeol.js (https://github.com/clee704/hangul-js)
  *   rangyinputs_jquery.js (http://code.google.com/p/rangyinputs)
- * @version 0.2
+ * @version 0.2.1
  * @copyright Copyright 2013, Choongmin Lee
  * @license MIT license
  */
